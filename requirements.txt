@@ -1,0 +1,13 @@
+jupyter
+python-dotenv
+google.generativeai
+langchain_google_genai
+langchain
+langchain_community
+faiss-cpu
+datasets
+TensorFlow
+transformers
+torch
+tf-keras
+accelerate>=0.26.0

@@ -1,0 +1,4 @@
+.idea
+.env
+.venv
+/distilgpt2-squad/
