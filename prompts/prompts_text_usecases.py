@@ -40,11 +40,53 @@ The theorem proves that, given these minimal assumptions, it is impossible to co
 # Create a list of 3 Disney characters.
 ## For each character, generate a short biography to tell me more about the character.
 """,
+"step_by_step": """
+# Follow these steps:
+## Step 1: 
+Condense the text enclosed in triple quotes into a single sentence.
+
+## Step 2: 
+Translate the summarized text into {0}.
+
+# Output format
+Summary: <output from Step 1>.
+{0} Translation: <output from Step 2>
+
+'''{1}'''
+""",
+"step_by_step_1":"""
+Step 1 - The user will hand over a chunk of text enclosed in triple 
+quotes. Your task is to condense this text into a single sentence, 
+starting with the phrase "Summary: ".
+
+Step 2 - Translate the summarization you made in Step 1 into {0}, 
+leading the translation with the phrase "Translation: "
+
+'''{1}'''
+"""
 
 }
 
-def fetch_prompt(prompt_key="default"):
-    return prompts.get(prompt_key, "default")
+def fetch_prompt(prompt_key="default", params=None):
+    """
+    Fetch a prompt by key and format it with optional parameters.
+
+    Args:
+        prompt_key (str, optional): The key of the prompt. Defaults to "default".
+        params (list, optional): A list of parameters to format the prompt. Defaults to None.
+
+    Returns:
+        str: The formatted prompt.
+
+    Raises:
+        TypeError: If params is not a list.
+    """
+    prompt = prompts.get(prompt_key, "default")
+    if params is not None:
+        if not isinstance(params, list):
+            raise TypeError("params must be a list")
+        prompt = prompt.format(*params)
+    return prompt
 
 if __name__ == "__main__":
-    print(fetch_prompt("list_gen"))
+    print(fetch_prompt("step_by_step", ['Spanish','HAPPY DATA']))
