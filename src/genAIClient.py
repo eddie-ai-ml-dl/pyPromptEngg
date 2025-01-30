@@ -30,6 +30,7 @@ class GenerativeAIClient:
             raise ValueError("API Key not provided or found in environment.")
         self.model_name = model_name
         self.model = None  # Initialize model to None; create it lazily
+        self.response = None
         self._configure_api()
         # self._initialize_model() #Initialize model eagerly, or do it lazily when invoked
 
@@ -74,12 +75,12 @@ class GenerativeAIClient:
         try:
             if self.show_info_log and log_token_counts:
                 logging.info(f"Prompt Tokens: \n{self.model.count_tokens(full_prompt)}")
-            response = self.model.generate_content(full_prompt)
-            if response.prompt_feedback:
-                logging.warning(f"Prompt feedback: {response}")
+            self.response = self.model.generate_content(full_prompt)
+            if self.response.prompt_feedback:
+                logging.warning(f"Prompt feedback: {self.response}")
             if self.show_info_log and log_token_counts:
-                logging.info(f"Token Stats: \n{response.usage_metadata}")
-            return response.text
+                logging.info(f"Token Stats: \n{self.response.usage_metadata}")
+            return self.response.text
         except Exception as e:
             logging.error(f"Error invoking {self.model_name}: {e}")
             return None
