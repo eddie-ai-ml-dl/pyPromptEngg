@@ -2,3 +2,4 @@
 .env
 .venv
 /distilgpt2-squad/
+!/all-requirements.txt
