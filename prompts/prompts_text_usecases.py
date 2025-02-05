@@ -58,6 +58,10 @@ prompts = {
     
     '''{1}'''
     """,
+"sb_winner": """Tell me the name of the superbowl winner in 2024.
+    """,
+"new_prompt": """this is my new prompt....
+    """,
 
 }
 
@@ -86,6 +90,8 @@ def list_prompt_keys():
     for key in prompts:
         print(key)
 
+
 if __name__ == "__main__":
     # print(fetch_prompt("step_by_step", ['Spanish','HAPPY DATA']))
-    list_prompt_keys()
+    # list_prompt_keys()
+    print(fetch_prompt("sb_winner"))
