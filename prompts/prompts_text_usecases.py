@@ -41,8 +41,8 @@ prompts = {
     ## For each character, generate a short biography to tell me more about the character.
     """,
 "delimited_instruct":
-    """"Summarize the text delimited by triple tildas.
-    ~~~Insert text here~~~
+    """"Summarize the text delimited by triple quotes.
+    '''{0}'''
     """,
 "step_by_step":
     """# Follow these steps:
@@ -64,6 +64,7 @@ prompts = {
     """,
 
 }
+
 
 def fetch_prompt(prompt_key="default", params=None):
     """
@@ -94,4 +95,7 @@ def list_prompt_keys():
 if __name__ == "__main__":
     # print(fetch_prompt("step_by_step", ['Spanish','HAPPY DATA']))
     # list_prompt_keys()
-    print(fetch_prompt("sb_winner"))
+    # print(fetch_prompt("sb_winner"))
+    text='some garbage text is being entered here.'
+    prompt=fetch_prompt("delimited_instruct", [text])
+    print(prompt)
