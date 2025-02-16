@@ -53,7 +53,7 @@ class GenerativeAIClient:
             logging.error(f"Error initializing model {self.model_name}: {e}")
             raise
 
-    def invoke(self, prompt, sys_instructions=None, log_token_counts=True):
+    def invoke(self, prompt, sys_instructions=None, log_token_counts=False):
         """
         Invokes the generative model with the given prompt and system instructions,
         returning the generated text.

@@ -1,0 +1,115 @@
+variant,prompt,response,feedback
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","ShapeFit, AdaptShoe, OmniShoe, FitPerfect",1
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Omni-Fit Shoes, Fit-All Footwear, Adaptable Footwear",1
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Omni-Fit Shoes, Adapt-to-Fit Footwear, Universal Fit Sneakers",0
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","OmniFit, AnyFit, InstaFit, AdaptoShoe",0
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","FitStep, OmniFit, SoleSolution",1
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Omni-Fit-Shoes, Adapta-Shoes",0
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Adapta-Fit, Omni-Fit, Universal-Fit",1
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","OmniFit, Adapt-a-Size, FitFlex",0
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","AdaptaFit, OmniFit, ShapeShift, Fit-All, FreeSize",0
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Omni-Fit Shoes, All-Fit Footwear, Adapt-A-Soles",1
+A,"Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+
+#output format:
+comma separated list.","Fit-All Shoes, Omni-Fit Shoes, AdaptaFit Shoes",0
+B,"Product description: A home milkshake maker.
+Themes: fast, healthy, compact.
+Product names: HomeShaker, Fit Shaker, QuickShake, Shake Maker
+
+Product description: A watch that can tell accurate time in space.
+Themes: astronaut, space-hardened, eliptical orbit
+Product names: AstroTime, SpaceGuard, Orbit-Accurate, EliptoTime.
+
+Product description: A pair of shoes that can fit any foot size.
+Themes: adaptable, fit, omni-fit.
+Product names:
+#output format:
+comma separated list.","FitForAll, Adapt-A-Shoe, OmniFit",1
