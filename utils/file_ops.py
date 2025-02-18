@@ -48,6 +48,6 @@ def save_to_text(text: str, file_name: str = 'prompt.txt', folder_name: str = '.
 
 
 if __name__ == "__main__":
-    fn='test.txt'
+    fn='lib.txt'
     prompt = "What's the distance to the moon?"
     save_to_text(text=prompt, file_name=fn)
