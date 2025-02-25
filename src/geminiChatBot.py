@@ -234,4 +234,5 @@ def invoke(prompt = "Tell me something funny but not corny.",
 
 # Example usage (command-line chatbot):
 if __name__ == '__main__':
-    invoke(temp=.3, top_p=0)
+    # invoke(temp=.3, top_p=0)
+    main()

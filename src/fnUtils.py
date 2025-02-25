@@ -3,6 +3,8 @@ import textwrap
 import re
 
 def to_markdownx(text):
+    if text is None:
+        return None
     # Consistent bullet points
     text = re.sub(r'[-•*] ', '* ', text)
     # Remove extra spaces before * in list items after replacement
