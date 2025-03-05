@@ -3,12 +3,13 @@ from dotenv import load_dotenv
 import os
 import datetime
 
+
 # Load environment variables
 load_dotenv()
 
 
 class GeminiChatbot:
-    def __init__(self, model_name='gemini-2.0-flash-exp', output_folder="../data/output/"):
+    def __init__(self, model_name='models/gemini-2.0-flash', system_instruction=None, output_folder="../data/output/"):
         """
         Initializes the Gemini chatbot.
 
@@ -45,8 +46,10 @@ class GeminiChatbot:
         # Initialize the model and chat session
         self.model = genai.GenerativeModel(self.model_name, generation_config=self.generation_config)
         self.chat = self.model.start_chat(history=[])
+        if system_instruction:
+            self.chat.send_message(system_instruction)
 
-        print("Gemini Chatbot Initialized. Ready for conversation.")
+        print(f"Gemini Chatbot ({self.model_name}) Initialized. Ready for conversation.")
 
     @staticmethod
     def _load_api_key():
@@ -72,6 +75,12 @@ class GeminiChatbot:
             raise ValueError("API key not found. Set GOOGLE_API_KEY environment variable or create GOOGLE_API_KEY.txt.")
         return api_key
 
+    @staticmethod
+    def list_models():
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                print(m.name)
+
     def send_message(self, message):
         """
         Sends a message to the Gemini model and returns the response.
@@ -87,7 +96,7 @@ class GeminiChatbot:
             return response.text
         except Exception as e:
             print(f"Error sending message: {e}")
-            return f"Error: {e}"
+            return f"**Error:** {e}"
 
     def end_chat(self):
         """
@@ -183,11 +192,20 @@ class GeminiChatbot:
         except Exception as e:
             print(f"Error setting max randomness: {e}")
 
-def main():
+    def output_chat_history(self):
+        for message in self.chat.history:
+            print(f'**{message.role}**: {message.parts[0].text}\n')
+
+    def get_last_response(self):
+        prev_response = self.chat.history[-1]
+        # print("Previous response:", prev_response)
+        return prev_response[1].parts[0].text
+
+def start_chat(system_instruction=None):
     chatbot = GeminiChatbot()
-
     print("Type 'exit' to end the chat.")
-
+    if system_instruction:
+        print("Chatbot:", chatbot.send_message(system_instruction))
     while True:
         user_message=input("You: ")
         if user_message.lower() in ['exit', 'quit']:
@@ -213,10 +231,13 @@ def main():
                 print("Invalid TopP value.  Use: topp [0.0-1.0]")
         elif user_message.lower()=="maxrandom":
             chatbot.max_random()
-
+        elif user_message.lower()=="rewind":
+            response = chatbot.get_last_response()
+            print("Prev Response:", response)
         else:
             response=chatbot.send_message(user_message)
-            print("Gemini:", response)
+            print("Chatbot:", response)
+
 
 def invoke(prompt = "Tell me something funny but not corny.",
            temp=.6,
@@ -227,12 +248,11 @@ def invoke(prompt = "Tell me something funny but not corny.",
     chatbot.change_top_k(top_k)
     chatbot.change_top_p(top_p)
 
-    print("Type 'exit' to end the chat.")
     response=chatbot.send_message(prompt)
     print("Gemini:", response)
 
 
 # Example usage (command-line chatbot):
 if __name__ == '__main__':
-    # invoke(temp=.3, top_p=0)
-    main()
+    invoke(temp=.3, top_p=0)
+    # main()

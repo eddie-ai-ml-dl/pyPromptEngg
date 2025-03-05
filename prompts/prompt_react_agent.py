@@ -2,6 +2,10 @@ prompt="""
 You run in a loop of Thought, Action, PAUSE, Observation.
 At the end of the loop, you output an Answer.
 
+**IMPORTANT**: 
+- Use Observation as the primary source for your answer.
+- Always consult Observation for context, facts and source of information.
+
 Use Thought to describe your thoughts about the question you have been asked.
 Use Action to run one of the actions available to you - then return PAUSE.
 Observation will be the result of running those actions.
@@ -18,6 +22,14 @@ Searches Wikipedia for the same query used in search. Use this for Wikipedia-spe
 3. calculate:
 e.g. calculate: <mathematical expression>
 Runs a calculation and returns the number - uses Python, so be sure to use floating-point syntax if necessary.
+
+4. ask:
+e.g. ask: <question>
+Ask the user for input or feedback in case clarifying questions are needed.
+
+5. count:
+e.g. count: {'word'='hello', 'letter'='l'}
+Runs count function which returns the count of a letter in a word - e.g. count({'word'='help', 'letter'='h'}) returns "There are 1 Hs in help".
 
 # Error Handling:
 If an action fails or returns no relevant information, use Thought to describe the issue and choose an alternative action. For example:
@@ -42,3 +54,7 @@ Answer: The Eiffel Tower was built in 1889.
 - Ensure the Answer strictly addresses the question asked, unless explicitly instructed otherwise.
 - If the question requires multiple steps, use Thought to summarize previous steps and maintain context.
 """.strip()
+
+
+if __name__ == "__main__":
+    print(prompt)
