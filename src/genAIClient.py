@@ -16,7 +16,7 @@ class GenerativeAIClient:
     _DEF_TEMPERATURE = .5
     _DEF_MAX_TOKENS = 2000
 
-    def __init__(self, api_key=None, model_name='models/gemini-1.5-pro', show_info_log=False, **kwargs):
+    def __init__(self, api_key=None, model_name='models/gemini-2.0-flash-lite', show_info_log=False, **kwargs):
         """
         Initializes the GenerativeAIClient.
 

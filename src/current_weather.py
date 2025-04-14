@@ -43,4 +43,4 @@ def get_current_weather(location="Mount Laurel, NJ", unit='fahrenheit') -> str:
 
 
 if __name__ == '__main__':
-    print(get_current_weather())
+    print(get_current_weather(location="Myrtle Beach, SC"))
