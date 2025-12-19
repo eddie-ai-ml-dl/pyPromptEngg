@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyprompteng"
+version = "0.1.0"
+description = "Prompt Engineering toolkit with Gemini API"
+requires-python = ">=3.9"
+dependencies = [
+    "python-dotenv",
+    "google-genai",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel",
+    "jupyter",
+    "ipython",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

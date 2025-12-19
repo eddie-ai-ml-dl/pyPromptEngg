@@ -5,7 +5,7 @@ def save_to_json(data_dict:dict=None, file_name: str='./data/exported_data.json'
     with open(file_name, 'w') as f:
         json.dump(data_dict, f, indent=4)
 
-def save_to_text(text: str, file_name: str = 'prompt.txt', folder_name: str = '../data/') -> None:
+def save_to_text(text: str, file_name: str = 'prompt.txt', folder_name: str = './data/') -> None:
     """
     Saves the given text to a file.
 
@@ -48,6 +48,6 @@ def save_to_text(text: str, file_name: str = 'prompt.txt', folder_name: str = '.
 
 
 if __name__ == "__main__":
-    fn='lib.txt'
+    fn='test1.txt'
     prompt = "What's the distance to the moon?"
     save_to_text(text=prompt, file_name=fn)

@@ -1,6 +1,7 @@
 .idea
 .env
 .venv
+venv/
 /distilgpt2-squad/
 !/all-requirements.txt
 /data/output/
