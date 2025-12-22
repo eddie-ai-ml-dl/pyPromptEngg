@@ -1,6 +1,11 @@
 import os
 import time
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    # Fallback if python-dotenv is not installed; environment variables must already be set
+    def load_dotenv(*args, **kwargs):
+        return False
 from openai import OpenAI
 
 # Load environment variables
