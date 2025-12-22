@@ -31,6 +31,40 @@ def get_model():
     """
     return DEFAULT_MODEL
 
+def list_models():
+    """
+    Returns a sorted list of all available model IDs from OpenAI.
+    """
+    client = get_client()
+    try:
+        models = client.models.list()
+        ids = [m.id for m in models.data]
+        return sorted(ids)
+    except Exception as e:
+        print(f"Error listing models: {e}")
+        return []
+
+def list_text_models():
+    """
+    Returns a filtered list of models suitable for text/chat generation.
+    Excludes embedding, audio, image-only, and TTS models.
+    """
+    ids = list_models()
+    if not ids:
+        return []
+
+    exclude_keywords = [
+        "embedding", "audio", "whisper", "tts", "speech", "image", "clip"
+    ]
+    def is_text_model(mid: str) -> bool:
+        lower = mid.lower()
+        if any(k in lower for k in exclude_keywords):
+            return False
+        # Common families for text/chat
+        return lower.startswith("gpt") or lower.startswith("o") or lower.startswith("text-")
+
+    return [mid for mid in ids if is_text_model(mid)]
+
 def generate_text(prompt, model_name=DEFAULT_MODEL, system_instruction=None, temperature=0.7):
     """
     Generates text from a prompt using the specified model.
