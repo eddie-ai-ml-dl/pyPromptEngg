@@ -1,0 +1,7 @@
+python-dotenv
+google-genai
+
+[dev]
+ipykernel
+jupyter
+ipython
