@@ -10,3 +10,7 @@ beautifulsoup4
 langchain-community
 pypdf
 faiss-cpu
+httpx
+ddg
+numexpr
+wikipedia
