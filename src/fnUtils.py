@@ -66,6 +66,18 @@ def remove_leading_whitespace(text, num_chars=4):
     modified_lines = [re.sub(r'^\s{' + str(num_chars) + '}', '', line) for line in lines]
     return '\n'.join(modified_lines)
 
+def stream_markdown(llm, prompt):
+    """
+    Stream llm responses and convert to Markdown.
+
+    :param llm: LLaMA model instance
+    :param prompt: Input prompt
+    :yield: Markdown formatted chunks
+    """
+    for chunk in llm.stream(prompt):
+        text = chunk.content.replace('•', '  *')
+        yield Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+
 
 if __name__ == "__main__":
     # Example usage:
