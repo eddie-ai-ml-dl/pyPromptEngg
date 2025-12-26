@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyprompteng"
 version = "0.1.0"
-description = "Prompt Engineering toolkit with Gemini API"
+description = "Prompt Engineering toolkit with OpenAI API"
 requires-python = ">=3.9"
 dependencies = [
     "python-dotenv",
