@@ -1,10 +1,10 @@
 import re
 import traceback
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 import httpx
-# import wikipedia
+import wikipedia
 import numexpr as ne
-from src.simpleChatBot import SimpleChatBot as ChatBot
+from src.simpleChatBot_chatgpt import SimpleChatBot as ChatBot
 
 prompt="""
 You run in a loop of Thought, Action, PAUSE, Observation.
@@ -112,24 +112,16 @@ def websearch(q, max_results=1):
 
 
 def wikisearch(q):
+    """Search Wikipedia for information using the wikipedia package."""
     try:
-        response=httpx.get("https://en.wikipedia.org/w/api.php", params={
-            "action": "query",
-            "prop": "extracts",
-            "exintro": True,
-            "titles": q,
-            "format": "json"
-        })
-        if response.status_code==200:
-            pages=response.json().get("query", {}).get("pages", {})
-            if pages:
-                return list(pages.values())[0].get("extract", "No information found.")
-            else:
-                return "Error: No search results found."
-        else:
-            return f"Error: Failed to fetch data. Status code: {response.status_code}"
-    except httpx.RequestError as e:
-        return f"Error: Request failed. {str(e)}"
+        result = wikipedia.summary(q, sentences=3)
+        return result
+    except wikipedia.exceptions.DisambiguationError as e:
+        # Return first few disambiguation options
+        options = e.options[:3]
+        return f"Multiple results found. Did you mean: {', '.join(options)}?"
+    except wikipedia.exceptions.PageError:
+        return f"No Wikipedia page found for '{q}'."
     except Exception as e:
         return f"Error: {str(e)}"
 

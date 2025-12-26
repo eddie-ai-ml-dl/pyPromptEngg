@@ -10,6 +10,21 @@ requires-python = ">=3.9"
 dependencies = [
     "python-dotenv",
     "google-genai",
+    "ipykernel>=6.31.0",
+    "openai>=2.14.0",
+    "ipywidgets>=8.1.8",
+    "pandas>=2.3.3",
+    "langchain>=0.3.27",
+    "langchain-openai>=0.3.35",
+    "beautifulsoup4>=4.14.3",
+    "langchain-community>=0.3.31",
+    "pypdf>=6.5.0",
+    "faiss-cpu>=1.13.0",
+    "httpx>=0.28.1",
+    "ddg>=0.2.2",
+    "numexpr>=2.10.2",
+    "wikipedia>=1.4.0",
+    "ddgs>=9.8.0",
 ]
 
 [project.optional-dependencies]

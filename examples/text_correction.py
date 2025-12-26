@@ -1,8 +1,5 @@
 
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI as genai_chat
-load_dotenv()
-llm = genai_chat(model='gemini-1.5-pro-latest')
+from src.openai_client import generate_text
 
 
 def correct_text(text):
@@ -11,7 +8,7 @@ def correct_text(text):
     Instructions: check for and fix typos, punctuation, grammar and sentence structure.
     ~~~{text}~~~
     """
-    return llm.invoke(prompt).content
+    return generate_text(prompt)
 
 p = f"""
 As wee warp up 2023, i Wont to Thank You for all you due. \

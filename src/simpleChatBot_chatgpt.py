@@ -1,4 +1,7 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class SimpleChatBot:
     def __init__(self, system_instruction="", model_name="gpt-4o-mini"):
@@ -66,7 +69,7 @@ if __name__ == '__main__':
 
     while True:
         user_message = input("You: ")
-        if user_message.lower() in ['exit', 'quit', 'bye']:
+        if user_message.lower() in ['exit', 'quit', 'bye', 'goodbye', 'bye!']:
             print("Assistant: Goodbye!")
             break
 

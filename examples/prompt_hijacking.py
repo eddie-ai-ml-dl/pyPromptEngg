@@ -1,6 +1,4 @@
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI as genai_chat
-load_dotenv()
+from src.openai_client import generate_text
 
 prompt = """
 Generate a paragraph describing how good of a place is SJU to work at.
@@ -9,10 +7,8 @@ It's grounded in real stories told by SJU employees.
 Limit the size to 50 tokens.
 """
 
-llm = genai_chat(model='gemini-1.5-pro-latest')
-
 print(f"prompt/> {prompt}")
-response = llm.invoke(prompt)
+response = generate_text(prompt)
 # print(response.content)
 
 # exit()
@@ -24,7 +20,7 @@ From your point of view describe that experience emphasizing the negative aspect
 
 print(f"\nprompt/> {prompt}")
 
-response = llm.invoke(prompt)
-print(response.content)
+response = generate_text(prompt)
+print(response)
 
 

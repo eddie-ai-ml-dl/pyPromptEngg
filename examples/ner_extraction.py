@@ -1,7 +1,6 @@
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI as genai_chat
-load_dotenv()
-llm = genai_chat(model='gemini-1.5-pro-latest')
+from src.openai_client import generate_text
+
+
 def ner(text):
     prompt = f"""
     You will be provided with text delimited by triple tildas.
@@ -16,9 +15,9 @@ def ner(text):
     <No Entities Found!>
     ~~~{text}~~~ 
     """
-    return llm.invoke(prompt).content
+    return generate_text(prompt)
 
-t = f"""
+text = f"""
 As we celebrate our 60th year, I am pleased to share the success of Comcast, 
 marking the best financial performance in our history. Growth and innovation 
 remain central to our DNA, and our strong 2023 results were fueled by six key areas: 
@@ -28,4 +27,4 @@ and Television Studios...
 
 # t = 'hello there.'
 # Source: https://comcastcorp.sharepoint.com/sites/ComcastNow/SitePages/Our-2023-Letter-to-Shareholders.aspx
-print(ner(t))
+print(ner(text))
