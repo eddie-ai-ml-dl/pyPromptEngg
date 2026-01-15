@@ -5,6 +5,7 @@ Lab and practice files for Agentic AI & Prompt Engineering Class!
 ### Recommended extensions
 - Microsoft Python (ms-python.python)
 - Jupyter (ms-toolsai.jupyter)
+- Check that python was properly installed => run the terminal command: python3 --version
 
 ### Create and activate the virtual environment (for editable install)
 - macOS/Linux: `python3 -m venv venv && source venv/bin/activate`
@@ -19,6 +20,5 @@ Lab and practice files for Agentic AI & Prompt Engineering Class!
 - Open the Command Palette → “Python: Select Interpreter” → choose the interpreter inside `venv`.
 
 ### Open the integrated terminal in VS Code
-- Shortcut: `Ctrl+`` (macOS: `Cmd+``) to toggle the terminal panel
-- Or use menu: View → Terminal
+- Terminal → New Terminal
 - In the terminal, activate venv if needed: `source venv/bin/activate` (macOS/Linux) or `.\venv\Scripts\Activate.ps1` (Windows PowerShell)
