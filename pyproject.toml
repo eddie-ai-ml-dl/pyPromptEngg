@@ -21,10 +21,9 @@ dependencies = [
     "pypdf>=6.5.0",
     "faiss-cpu>=1.13.0",
     "httpx>=0.28.1",
-    "ddg>=0.2.2",
     "numexpr>=2.10.2",
     "wikipedia>=1.4.0",
-    "ddgs>=9.8.0",
+    "ddgs>=9.10.0",
 ]
 
 [project.optional-dependencies]
