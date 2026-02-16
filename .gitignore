@@ -1,5 +1,6 @@
 # Ignore temporary folder used in notebooks
 tmp/
+_my_workspace/
 .idea
 .env
 .venv
