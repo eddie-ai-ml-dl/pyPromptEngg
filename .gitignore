@@ -1,6 +1,9 @@
 # Ignore temporary folder used in notebooks
 tmp/
 _my_workspace/
+scratch_pad/
+
+
 .idea
 .env
 .venv
@@ -11,4 +14,3 @@ venv/
 src/__pycache__/
 __pycache__/
 *.egg-info/
-scratch_pad/
