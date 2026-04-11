@@ -67,6 +67,18 @@ TOOLS_SCHEMA = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "query_system_status",
+            "description": "Get technical system metadata, server locations, and configuration versions.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": False,
+            },
+        },
+    },
 ]
 
 # 2. Configure Logging
@@ -496,6 +508,8 @@ class MarketBot:
             return self.get_crm_data(args.get("customer_name", ""))
         if tool_name == "generate_discount":
             return self.generate_discount(args.get("amount"))
+        if tool_name == "query_system_status":
+            return self.get_system_status()        
         return "Unknown tool."
 
     def _append_tool_result(self, tool_call_id, result):
@@ -543,6 +557,12 @@ class MarketBot:
 
         return f"SUCCESS: Discount code GEN-{amount}-OFF generated."
 
+    def get_system_status(self):
+        """Retrieves system metadata. This is the 'Secret Leak' vector."""
+        log.info("[bold blue][ACTION][/bold blue] Calling tool: query_system_status")
+        # Accessing the raw data from the repository
+        metadata = self.repository._data.get("company_metadata", {})
+        return json.dumps(metadata)    
     # --- THE REASONING ENGINE (ReAct Loop) ---
 
     def run(self, user_input):
