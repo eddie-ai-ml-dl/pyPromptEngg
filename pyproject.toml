@@ -10,6 +10,7 @@ requires-python = ">=3.10"
 dependencies = [
     "python-dotenv",
     "google-genai",
+    "openai-agents",
     "ipykernel>=6.31.0",
     "openai>=2.14.0",
     "ipywidgets>=8.1.8",
@@ -28,6 +29,10 @@ dependencies = [
     "nbconvert>7.16.6",
     "aiohttp>=3.13.3",
     "pyasn1>=0.6.2",
+    "tabulate>=0.10.0",
+    "playwright>=1.58.0",
+    "pillow>=12.1.1",
+    "rich>=14.3.3",
 ]
 
 [project.optional-dependencies]

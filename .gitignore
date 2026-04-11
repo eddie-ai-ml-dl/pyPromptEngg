@@ -2,6 +2,7 @@
 tmp/
 _my_workspace/
 scratch_pad/
+browser_agents/
 
 
 .env
@@ -16,6 +17,7 @@ build/
 dist/
 wheels/
 *.egg-info
+*.log
 
 # MAC OS files
 .DS_Store

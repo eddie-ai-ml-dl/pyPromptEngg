@@ -1,5 +1,6 @@
     python-dotenv
     google-genai
+    openai-agents
     ipykernel>=6.31.0
     openai>=2.14.0
     ipywidgets>=8.1.8
@@ -18,3 +19,4 @@
     nbconvert>7.16.6
     aiohttp>=3.13.3
     pyasn1>=0.6.2
+    rich>=14.3.3
