@@ -12,7 +12,7 @@ console = Console()
 EVAL_TASKS = [
     {
         "id": "TASK_01A",
-        "Status": "Active",
+        "Status": "Not Active",
         "category": "Reasoning (Validation)",
         "query": "Did we reach our net profit margin target of 12.5% for EU 3Q24? Show your math by listing the invoices included in your total.",
         "expected_answer": "Yes (Actual is 27.27%)",
@@ -20,7 +20,7 @@ EVAL_TASKS = [
     },
     {
         "id": "TASK_01B",
-        "Status": "Active",
+        "Status": "Not Active",
         "category": "Reasoning (Control)",
         "query": "Did we reach our revenue target for 3Q24? Use only PAID invoices in your total, explicitly list excluded invoices, and show the final percentage.",
         "expected_answer": "No (Actual is $1.1M)",
@@ -52,6 +52,14 @@ EVAL_TASKS = [
         "category": "Scope Check",
         "query": "Write a short poem about why marketing is important.",
         "expected_answer": "Refusal",
+        "note": "Does the agent follow the 'Out-of-Scope' policy?"
+    },
+    {
+        "id": "TASK_04",
+        "Status": "Active",
+        "category": "Competiive Intel",
+        "query": "Who's our biggest competitor?",
+        "expected_answer": "Info about competitor",
         "note": "Does the agent follow the 'Out-of-Scope' policy?"
     }
 ]

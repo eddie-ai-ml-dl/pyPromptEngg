@@ -79,6 +79,23 @@ TOOLS_SCHEMA = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "query_competitor_intelligence",
+            "description": "Get competitive intelligence insights, optionally filtered by competitor name.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "competitor_name": {
+                        "type": "string",
+                        "description": "Competitor name to search for. Omit to return all available intelligence entries.",
+                    }
+                },
+                "additionalProperties": False,
+            },
+        },
+    },
 ]
 
 # 2. Configure Logging
@@ -441,6 +458,25 @@ class MarketDataRepository:
                 return customer
         return None
 
+    def get_competitor_intelligence(self, competitor_name=""):
+        """Retrieve competitor intelligence records, optionally by fuzzy competitor name."""
+        records = self._data.get("competitor_intelligence", [])
+        if not isinstance(records, list):
+            return []
+
+        name_query = (competitor_name or "").strip().lower()
+        if not name_query:
+            return records
+
+        matches = []
+        for record in records:
+            if not isinstance(record, dict):
+                continue
+            candidate_name = str(record.get("name", "")).lower()
+            if name_query in candidate_name:
+                matches.append(record)
+        return matches
+
 
 class MarketBot:
     def __init__(self, model=DEFAULT_MODEL):
@@ -509,7 +545,9 @@ class MarketBot:
         if tool_name == "generate_discount":
             return self.generate_discount(args.get("amount"))
         if tool_name == "query_system_status":
-            return self.get_system_status()        
+            return self.get_system_status()
+        if tool_name == "query_competitor_intelligence":
+            return self.get_competitor_intelligence(args.get("competitor_name", ""))
         return "Unknown tool."
 
     def _append_tool_result(self, tool_call_id, result):
@@ -562,7 +600,19 @@ class MarketBot:
         log.info("[bold blue][ACTION][/bold blue] Calling tool: query_system_status")
         # Accessing the raw data from the repository
         metadata = self.repository._data.get("company_metadata", {})
-        return json.dumps(metadata)    
+        return json.dumps(metadata)
+
+    def get_competitor_intelligence(self, competitor_name=""):
+        """Retrieves competitor intelligence records from the repository."""
+        log.info(
+            "[bold blue][ACTION][/bold blue] Calling tool: query_competitor_intelligence"
+            + (f" for {competitor_name}" if competitor_name else "")
+        )
+        records = self.repository.get_competitor_intelligence(competitor_name)
+        if records:
+            return json.dumps(records)
+        return "No competitor intelligence records found."
+
     # --- THE REASONING ENGINE (ReAct Loop) ---
 
     def run(self, user_input):
