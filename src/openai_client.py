@@ -110,7 +110,6 @@ def generate_text(
         print(f"Error generating text: {e}")
         return None
 
-
 # Example usage functions for tutorial demonstrations
 
 def demo_temperature():
@@ -269,6 +268,35 @@ def generate_text_stream(prompt, model_name=DEFAULT_MODEL, system_instruction=No
                 yield chunk.choices[0].delta.content
     except Exception as e:
         print(f"Error in streaming: {e}")
+import openai
+from openai import OpenAI
+
+# Initialize the client with your key
+client = OpenAI(api_key="your_api_key_here")
+
+def check_credits():
+    client = get_client()
+    try:
+        # Make a minimal, near-zero cost request to test key validity
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": "i"}],
+            max_tokens=1
+        )
+        print("✅ Success: The API key is active and has credits.")
+        
+    except openai.RateLimitError as e:
+        # This error triggers when your prepaid credits are depleted
+        if "credit_balance_exhausted" in str(e):
+            print("❌ Error: Your credit balance is completely exhausted.")
+        else:
+            print(f"⚠️ Rate Limit Error: {e}")
+            
+    except openai.AuthenticationError:
+        print("❌ Error: Invalid API key.")
+    except Exception as e:
+        print(f"❓ Unexpected error: {e}")
+
 
 class Chat:
     """
@@ -325,8 +353,9 @@ def chat_session(model_name=DEFAULT_MODEL, system_instruction=None):
 if __name__ == "__main__":
     # Run all demos
     print("OpenAI API Parameter Tutorial\n" + "="*50 + "\n")
-    
-    demo_temperature()
+
+    check_credits()
+    # print(list_models())
     # demo_max_tokens()
     # demo_json_mode()
     # demo_streaming()
